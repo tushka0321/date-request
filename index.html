@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-IN" dir="ltr">
+  <head>
+    <title>Do you wanna go out with me?</title>
+    <meta charset="utf-8">
+    <meta name="author" content="SidPro"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Invite your lover for a date on Collegeek online learning platform."/>
+    <meta name="keywords" content="Date invitation, Collegeek, Learning, Programming, Tools, Convertor, Microprocessor"/>
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="60x60" href="image/icons/favicon-60x60.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="image/icons/favicon-512x512.png">
+    <link rel="shortcut icon" type="image/x-icon" href="image/icons/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="image/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="image/icons/favicon-144x144.png">
+    <meta name="msapplication-config" content="image/icons/browserconfig.xml">
+    <link rel="manifest" href="image/icons/manifest.json">
+    <!-- Icons -->
+  </head>
+  <style>body {
+    height: 90vh;
+    background-color: #ec777e;
+}
+#ans {
+    display: none;
+}
+#ansvideo{
+    visibility: hidden;
+}
+#novideo{
+    visibility: hidden;
+}
+#noButton {
+    position: absolute;
+    margin-left: 150px;
+    margin-bottom: -50px;
+    transition: 0.5s;
+}
+#yesButton {
+    position: absolute;
+    margin-right: 150px;
+    margin-bottom: -50px;
+}
+.header_text {
+    font-family: 'Nunito';
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(238, 233, 233);
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 0px;
+}
+.text {
+    font-family: 'Nunito';
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.btn {
+    background-color: #FFB6C1;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #ff8e9f;
+}
+.gif_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.qrimage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 350px;
+    height: auto;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+    .header_text{
+        color: rgb(177, 43, 134);
+        font-size: 40px;
+   }
+    .qrimage{
+        max-width: 50%;
+        padding-left: 25%;
+   }
+    .gif_container{
+        margin-left:0;
+        height: auto;
+        width: auto;
+   }
+}</style>
+  <body>
+    <div id="ask" class="container">
+      <div>
+        <h1 class="header_text">Do you wanna go out with me?</h1>
+      </div>
+      <div class="gif_container">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2FyZXRvYWJ3dWw3dWNyaThmZHc1bTF6OTZtMDlnMGwyZGVuYzBmYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sc54SIQ5QekyhMvat9/giphy.gif" alt="Cute animated illustration">
+      </div>
+      <div class="buttons">
+        <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+        <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
+      </div>
+      <video id="novideo" width="40" height="4xw0" controls>
+        <source src="image/SadMoment.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div id="ans" class="container">
+      <div>
+        <h1 class="header_text">Yeeeyyyy!! See you tomorrow🤍
+        </h1>
+      </div>
+      <div class="gif_container">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnZ2bmF5Nndsa2htb3VqNnU5ZWUwNWg5ajRyNGR6OHM3YmIxczdtcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NxC8VtyxqhMtpLoEEN/giphy.gif" alt="Cute animated illustration">
+      </div>
+      
+      <video id="ansvideo" width="0" height="0" controls>
+        <source src="image/KidsCheering.mp4" type="video/mp4">
+      </video>
+    </div>
+    <script>
+      var debounce = function(fn, t = 1000) {
+        let timer;
+        return function(...args) {
+          clearTimeout(timer);
+          timer = setTimeout(() => fn(...args), t);
+        }
+      };
+
+      function playAudio() {
+        document.getElementById('novideo').play();
+      }
+
+      function nextPage() {
+        document.getElementById('ans').style.display = 'block';
+        document.getElementById('ask').style.display = 'none';
+        document.getElementById('novideo').pause();
+        document.getElementById('ansvideo').play();
+      }
+
+      function moveButton() {
+        var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth);
+        var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight);
+        document.getElementById('noButton').style.left = `${x}px`;
+        document.getElementById('noButton').style.top = `${y}px`;
+        playAudio();
+      }
+    </script>
+  </body> 
+</html>
